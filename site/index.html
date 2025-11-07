@@ -3,83 +3,86 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BrassBook - Образовательная платформа для музыкантов</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>ResumeBuilder - Конструктор резюме</title>
+    <link rel="stylesheet" href="styles/style.css">
 </head>
 <body>
-    <header>
-        <nav class="navbar">
+    <header class="header">
+        <nav class="nav">
             <div class="nav-brand">
-                <h2>🎺 BrassBook</h2>
+                <img src="images/logo.svg" alt="ResumeBuilder" class="logo">
+                <span>ResumeBuilder</span>
             </div>
             <ul class="nav-links">
-                <li><a href="index.html">Главная</a></li>
-                <li><a href="about.html">О проекте</a></li>
-                <li><a href="design.html">Дизайн</a></li>
-                <li><a href="team.html">Участники</a></li>
-                <li><a href="blog.html">Журнал</a></li>
-                <li><a href="resources.html">Ресурсы</a></li>
+                <li><a href="#features">Возможности</a></li>
+                <li><a href="#templates">Шаблоны</a></li>
+                <li><a href="#about">О проекте</a></li>
             </ul>
         </nav>
     </header>
 
-    <main>
+    <main class="main">
         <section class="hero">
             <div class="hero-content">
-                <h1>BrassBook - образовательная платформа для музыкантов</h1>
-                <p>Инновационная цифровая среда для учеников классов медных духовых и ударных инструментов детских музыкальных школ и школ искусств России</p>
-                <a href="about.html" class="btn-primary">Узнать о проекте</a>
-            </div>
-            <div class="hero-image">
-                <div class="placeholder-image">🎵</div>
+                <h1 class="hero-title">Создайте идеальное резюме за 10 минут</h1>
+                <p class="hero-subtitle">Профессиональные шаблоны, умные подсказки и экспорт в PDF</p>
+                <button class="cta-button">Начать создание</button>
             </div>
         </section>
 
-        <section class="features">
-            <h2>Ключевые возможности платформы</h2>
+        <section id="features" class="features">
+            <h2>Почему выбирают наш конструктор</h2>
             <div class="features-grid">
                 <div class="feature-card">
-                    <div class="feature-icon">🎼</div>
-                    <h3>Нотная библиотека</h3>
-                    <p>Обширная коллекция произведений для медных духовых и ударных инструментов</p>
+                    <h3>📱 Удобный интерфейс</h3>
+                    <p>Простой и понятный дизайн для быстрого создания резюме</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">🎧</div>
-                    <h3>Аудио-сравнение</h3>
-                    <p>Автоматическое сравнение исполнения с эталонными записями</p>
+                    <h3>🎯 ATS-оптимизация</h3>
+                    <p>Шаблоны проходят проверку системами автоматического отбора</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">📊</div>
-                    <h3>Анализ прогресса</h3>
-                    <p>Детальная статистика и отслеживание музыкального развития</p>
+                    <h3>💡 Умные подсказки</h3>
+                    <p>Контекстные советы для каждого раздела резюме</p>
                 </div>
             </div>
         </section>
 
-        <section class="project-stats">
-            <h2>Проект в цифрах</h2>
-            <div class="stats-grid">
-                <div class="stat-item">
-                    <div class="stat-number">4+</div>
-                    <div class="stat-label">месяца разработки</div>
+        <section id="templates" class="templates">
+            <h2>Наши шаблоны</h2>
+            <div class="templates-grid">
+                <div class="template-card">
+                    <h3>Классика</h3>
+                    <p>Строгий ATS-оптимизированный шаблон</p>
                 </div>
-                <div class="stat-item">
-                    <div class="stat-number">15+</div>
-                    <div class="stat-label">участников команды</div>
+                <div class="template-card">
+                    <h3>Современный</h3>
+                    <p>Стильный дизайн для творческих профессий</p>
                 </div>
-                <div class="stat-item">
-                    <div class="stat-number">20+</div>
-                    <div class="stat-label">функциональных модулей</div>
+                <div class="template-card">
+                    <h3>Консервативный</h3>
+                    <p>Традиционный двухколоночный макет</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="design-system">
+            <h2>Дизайн-система проекта</h2>
+            <div class="design-content">
+                <div class="colors">
+                    <h3>Цветовая палитра</h3>
+                    <img src="images/color-palette.png" alt="Цветовая палитра" class="design-image">
+                </div>
+                <div class="typography">
+                    <h3>Типографика</h3>
+                    <img src="images/typography.png" alt="Типографика" class="design-image">
                 </div>
             </div>
         </section>
     </main>
 
-    <footer>
-        <div class="footer-content">
-            <p>&copy; 2024 BrassBook. Образовательная платформа для музыкальных школ.</p>
-            <p>Куратор проекта: В. А. Стрижеус</p>
-        </div>
+    <footer class="footer">
+        <p>&copy; 2025 ResumeBuilder. Курсовой проект по Технологиям прикладного программирования</p>
     </footer>
 </body>
 </html>
