@@ -1,1 +1,8 @@
-
+/* ТЕСТОВЫЕ СТИЛИ - УБЕДИТЕСЬ ЧТО РАБОТАЕТ */
+body {
+    background: #8B4513 !important;
+    color: white !important;
+    font-family: Arial !important;
+    padding: 50px !important;
+    text-align: center !important;
+}
