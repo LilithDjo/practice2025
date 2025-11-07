@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>О проекте - BrassBook</title>
+    <title>О проекте - ResumeBuilder</title>
     <style>
         * {
             margin: 0;
@@ -12,208 +12,216 @@
         }
 
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: 'Open Sans', Arial, sans-serif;
             line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            min-height: 100vh;
+            color: #2D2D2D;
+            background-color: #FDFDFD;
         }
 
-        .navbar {
-            background: #8B4513;
-            color: white;
-            padding: 1rem 5%;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        :root {
+            --primary-accent: #A68B6A;
+            --secondary-accent: #D7C8B7;
+            --background: #FDFDFD;
+            --text-primary: #2D2D2D;
+            --text-secondary: #5A5A5A;
         }
 
-        .nav-brand h2 {
-            color: white;
-            font-size: 1.8rem;
+        .header {
+            background-color: var(--background);
+            border-bottom: 1px solid var(--secondary-accent);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 600;
+            font-size: 1.25rem;
         }
 
         .nav-links {
             display: flex;
             list-style: none;
             gap: 2rem;
-            margin-top: 1rem;
-            flex-wrap: wrap;
         }
 
         .nav-links a {
-            color: white;
             text-decoration: none;
-            padding: 0.5rem 1rem;
-            border-radius: 5px;
-            transition: all 0.3s;
+            color: var(--text-primary);
             font-weight: 500;
+            transition: color 0.3s ease;
         }
 
         .nav-links a:hover {
-            background: rgba(255,255,255,0.2);
-            transform: translateY(-2px);
+            color: var(--primary-accent);
         }
 
-        .about-content {
+        .main {
+            margin-top: 80px;
+        }
+
+        .container {
             max-width: 1200px;
-            margin: 2rem auto;
-            padding: 0 5%;
+            margin: 0 auto;
+            padding: 0 2rem;
         }
-        
-        .about-section {
-            background: white;
-            padding: 3rem;
-            margin-bottom: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+
+        .page-hero {
+            background: linear-gradient(135deg, var(--secondary-accent) 0%, var(--background) 100%);
+            padding: 3rem 0;
+            text-align: center;
+            margin-bottom: 3rem;
         }
-        
-        .about-section h1 {
-            color: #8B4513;
-            margin-bottom: 1rem;
+
+        .page-hero h1 {
             font-size: 2.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
         }
-        
-        .about-section h2 {
-            color: #8B4513;
-            margin: 2rem 0 1rem 0;
-            border-bottom: 2px solid #8B4513;
-            padding-bottom: 0.5rem;
+
+        .page-hero p {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
         }
-        
-        .team-structure {
+
+        .details-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            padding: 2rem 0;
         }
-        
-        .team-role {
-            background: #f8f4e8;
-            padding: 1.5rem;
-            border-radius: 10px;
-            border-left: 4px solid #8B4513;
+
+        .detail-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid var(--secondary-accent);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
-        
-        .team-role h3 {
-            color: #8B4513;
+
+        .detail-card h3 {
+            color: var(--primary-accent);
+            margin-bottom: 1rem;
+        }
+
+        .detail-card ul {
+            list-style-position: inside;
+            color: var(--text-secondary);
+            margin-left: 1rem;
+        }
+
+        .detail-card li {
             margin-bottom: 0.5rem;
         }
 
-        footer {
-            background: #2c3e50;
-            color: white;
+        .footer {
+            background-color: var(--secondary-accent);
             text-align: center;
             padding: 2rem;
-            margin-top: 3rem;
+            margin-top: 4rem;
+            color: var(--text-primary);
         }
 
         @media (max-width: 768px) {
-            .nav-links {
+            .nav {
                 flex-direction: column;
-                gap: 0.5rem;
+                gap: 1rem;
             }
-            
-            .about-section {
-                margin: 1rem;
-                padding: 2rem 1rem;
+
+            .nav-links {
+                gap: 1rem;
+            }
+
+            .details-grid {
+                grid-template-columns: 1fr;
+                padding: 1rem;
             }
         }
     </style>
 </head>
 <body>
-    <header>
-        <nav class="navbar">
+    <header class="header">
+        <nav class="nav">
             <div class="nav-brand">
-                <h2>🎺 BrassBook</h2>
+                <span>📄 ResumeBuilder</span>
             </div>
             <ul class="nav-links">
                 <li><a href="index.html">Главная</a></li>
                 <li><a href="about.html">О проекте</a></li>
-                <li><a href="design.html">Дизайн</a></li>
                 <li><a href="team.html">Участники</a></li>
-                <li><a href="blog.html">Журнал</a></li>
+                <li><a href="journal.html">Журнал</a></li>
                 <li><a href="resources.html">Ресурсы</a></li>
             </ul>
         </nav>
     </header>
 
-    <main class="about-content">
-        <section class="about-section">
-            <h1>Образовательная платформа BrassBook</h1>
-            <p><strong>BrassBook</strong> - инновационная цифровая платформа, созданная для учеников классов медных духовых и ударных инструментов детских музыкальных школ и школ искусств Российской Федерации.</p>
-            
-            <h2>Миссия проекта</h2>
-            <p>Создание современной образовательной среды, которая объединяет традиции музыкального образования с цифровыми технологиями, делая обучение более доступным, интерактивным и эффективным.</p>
-            
-            <h2>Целевая аудитория</h2>
-            <p>Учащиеся ДМШ и школ искусств, преподаватели музыкальных дисциплин, а также все любители медной духовой и ударной музыки.</p>
-        </section>
-
-        <section class="about-section">
-            <h2>Структура работы над проектом</h2>
-            <div class="team-structure">
-                <div class="team-role">
-                    <h3>🎨 Дизайн</h3>
-                    <p>Доработка существующих страниц, реорганизация и анимация, разработка темной темы</p>
-                </div>
-                <div class="team-role">
-                    <h3>⚙️ Бек-енд</h3>
-                    <p>Разработка алгоритма сравнения мелодий, авторизации, оптимизация на Python</p>
-                </div>
-                <div class="team-role">
-                    <h3>🎵 Фронт-енд</h3>
-                    <p>Смена тональности и скорости воспроизведения, фильтрация треков, верстка проверки мелодий</p>
-                </div>
-                <div class="team-role">
-                    <h3>📊 Менеджмент</h3>
-                    <p>Распределение задач, контроль выполнения, взаимодействие с участниками, отчетность</p>
-                </div>
+    <main class="main">
+        <section class="page-hero">
+            <div class="container">
+                <h1>О проекте</h1>
+                <p>Подробное описание целей, задач и особенностей ResumeBuilder</p>
             </div>
         </section>
 
-        <section class="about-section">
-            <h2>Ключевые функции платформы</h2>
-            <ul style="list-style: none; padding: 0;">
-                <li style="padding: 0.5rem 0; border-bottom: 1px solid #eee;">🎼 <strong>Интерактивная нотная библиотека</strong> с произведениями для медных духовых и ударных инструментов</li>
-                <li style="padding: 0.5rem 0; border-bottom: 1px solid #eee;">🎧 <strong>Система аудио-сравнения</strong> исполнения с эталонными записями</li>
-                <li style="padding: 0.5rem 0; border-bottom: 1px solid #eee;">🎹 <strong>Инструменты для работы с тональностью и темпом</strong></li>
-                <li style="padding: 0.5rem 0; border-bottom: 1px solid #eee;">📊 <strong>Персональный кабинет</strong> с отслеживанием прогресса</li>
-                <li style="padding: 0.5rem 0;">👥 <strong>Сообщество преподавателей и учащихся</strong></li>
-            </ul>
-        </section>
+        <section class="project-details">
+            <div class="container">
+                <div class="details-grid">
+                    <div class="detail-card">
+                        <h3>📋 Описание проекта</h3>
+                        <p>ResumeBuilder — это мобильное приложение, предназначенное для помощи пользователям в составлении, оформлении и экспорте профессиональных резюме. Проект разработан как курсовая работа по дисциплине "Технологии прикладного программирования".</p>
+                    </div>
 
-        <section class="about-section">
-    <h2>Дизайн интерфейса в Figma</h2>
-    <p>Разработка пользовательского интерфейса велась в Figma с акцентом на удобство использования и музыкальную тематику.</p>
-    
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-top: 2rem;">
-        <div style="text-align: center;">
-            <img src="main-page.png" alt="Главная страница" style="width: 100%; max-width: 280px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); border: 2px solid #8B4513;">
-            <p style="margin-top: 1rem; font-weight: bold; color: #2c3e50;">Главная страница</p>
-        </div>
-        <div style="text-align: center;">
-            <img src="album-page.png" alt="Страница альбома" style="width: 100%; max-width: 280px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); border: 2px solid #8B4513;">
-            <p style="margin-top: 1rem; font-weight: bold; color: #2c3e50;">Страница альбома</p>
-        </div>
-        <div style="text-align: center;">
-            <img src="player-screen.png" alt="Аудио-плеер" style="width: 100%; max-width: 280px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); border: 2px solid #8B4513;">
-            <p style="margin-top: 1rem; font-weight: bold; color: #2c3e50;">Аудио-плеер</p>
-        </div>
-    </div>
-    
-    <div style="text-align: center; margin-top: 2rem;">
-        <a href="design.html" style="display: inline-block; background: #8B4513; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; font-weight: bold; transition: all 0.3s;">
-            📐 Смотреть все макеты
-        </a>
-    </div>
-</section>
+                    <div class="detail-card">
+                        <h3>🎯 Проблема</h3>
+                        <p>Многие пользователи сталкиваются с трудностями при создании резюме: отсутствие дизайнерских навыков, незнание современных требований HR, психологические барьеры при самопрезентации.</p>
+                    </div>
+
+                    <div class="detail-card">
+                        <h3>💡 Решение</h3>
+                        <p>Мы предлагаем интуитивно понятное мобильное приложение с готовыми ATS-оптимизированными шаблонами, пошаговым конструктором и контекстными подсказками.</p>
+                    </div>
+
+                    <div class="detail-card">
+                        <h3>🚀 Основные функции</h3>
+                        <ul>
+                            <li>Создание и редактирование нескольких резюме</li>
+                            <li>Выбор из ATS-оптимизированных шаблонов</li>
+                            <li>Пошаговый конструктор с подсказками</li>
+                            <li>Предпросмотр в реальном времени</li>
+                            <li>Экспорт в PDF формат</li>
+                        </ul>
+                    </div>
+
+                    <div class="detail-card">
+                        <h3>🎨 Дизайн-подход</h3>
+                        <p>Приложение использует минималистичный интерфейс в бежевой цветовой гамме, обеспечивающий профессиональный вид и удобство использования.</p>
+                    </div>
+
+                    <div class="detail-card">
+                        <h3>📱 Технологии</h3>
+                        <p>Проект реализуется с использованием современных кроссплатформенных технологий для обеспечения доступности на iOS и Android.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
-    <footer>
-        <div class="footer-content">
-            <p>&copy; 2025 BrassBook. Образовательная платформа для музыкальных школ.</p>
-            <p>Куратор проекта: В. А. Стрижеус</p>
-        </div>
+    <footer class="footer">
+        <p>&copy; 2025 ResumeBuilder. Курсовой проект по Технологиям прикладного программирования</p>
     </footer>
 </body>
 </html>
