@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Участники - BrassBook</title>
+    <title>Участники - ResumeBuilder</title>
     <style>
         * {
             margin: 0;
@@ -12,271 +12,266 @@
         }
 
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: 'Open Sans', Arial, sans-serif;
             line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            min-height: 100vh;
+            color: #2D2D2D;
+            background-color: #FDFDFD;
         }
 
-        .navbar {
-            background: #8B4513;
-            color: white;
-            padding: 1rem 5%;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        :root {
+            --primary-accent: #A68B6A;
+            --secondary-accent: #D7C8B7;
+            --background: #FDFDFD;
+            --text-primary: #2D2D2D;
+            --text-secondary: #5A5A5A;
         }
 
-        .nav-brand h2 {
-            color: white;
-            font-size: 1.8rem;
+        .header {
+            background-color: var(--background);
+            border-bottom: 1px solid var(--secondary-accent);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 600;
+            font-size: 1.25rem;
         }
 
         .nav-links {
             display: flex;
             list-style: none;
             gap: 2rem;
-            margin-top: 1rem;
-            flex-wrap: wrap;
         }
 
         .nav-links a {
-            color: white;
             text-decoration: none;
-            padding: 0.5rem 1rem;
-            border-radius: 5px;
-            transition: all 0.3s;
+            color: var(--text-primary);
             font-weight: 500;
+            transition: color 0.3s ease;
         }
 
         .nav-links a:hover {
-            background: rgba(255,255,255,0.2);
-            transform: translateY(-2px);
+            color: var(--primary-accent);
         }
 
-        .team-content {
+        .main {
+            margin-top: 80px;
+        }
+
+        .container {
             max-width: 1200px;
-            margin: 2rem auto;
-            padding: 0 5%;
+            margin: 0 auto;
+            padding: 0 2rem;
         }
-        
-        .team-grid {
+
+        .page-hero {
+            background: linear-gradient(135deg, var(--secondary-accent) 0%, var(--background) 100%);
+            padding: 3rem 0;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .page-hero h1 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .page-hero p {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+        }
+
+        .members-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
             gap: 2rem;
-            margin-top: 2rem;
+            padding: 2rem 0;
         }
-        
-        .team-member {
+
+        .member-card {
             background: white;
             padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            text-align: center;
-            transition: all 0.3s;
+            border-radius: 12px;
+            border: 1px solid var(--secondary-accent);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
-        
-        .team-member:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
-        }
-        
+
         .member-avatar {
-            width: 120px;
-            height: 120px;
-            background: linear-gradient(135deg, #8B4513 0%, #D2691E 100%);
+            width: 80px;
+            height: 80px;
             border-radius: 50%;
-            margin: 0 auto 1rem;
+            background-color: var(--primary-accent);
+            color: white;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2.5rem;
-            color: white;
-        }
-        
-        .member-role {
-            color: #8B4513;
-            font-weight: 600;
-            margin: 0.5rem 0;
-            font-size: 1.1rem;
-        }
-        
-        .contributions {
-            text-align: left;
-            margin-top: 1rem;
-        }
-        
-        .contributions ul {
-            list-style: none;
-            padding: 0;
-        }
-        
-        .contributions li {
-            padding: 0.5rem 0;
-            border-bottom: 1px solid #eee;
-            color: #555;
-        }
-        
-        .contributions li:before {
-            content: "🎵 ";
-            color: #8B4513;
+            font-size: 1.5rem;
             font-weight: bold;
-        }
-        
-        .project-leadership {
-            background: linear-gradient(135deg, #8B4513 0%, #D2691E 100%);
-            color: white;
-            padding: 2rem;
-            border-radius: 15px;
-            margin: 3rem 0;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-bottom: 1rem;
         }
 
-        footer {
-            background: #2c3e50;
-            color: white;
+        .member-role {
+            color: var(--primary-accent);
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+
+        .contributions h4 {
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+
+        .contributions ul {
+            list-style-position: inside;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .contributions li {
+            margin-bottom: 0.5rem;
+        }
+
+        .skills h4 {
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .skill-tag {
+            background-color: var(--secondary-accent);
+            color: var(--text-primary);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+        }
+
+        .footer {
+            background-color: var(--secondary-accent);
             text-align: center;
             padding: 2rem;
-            margin-top: 3rem;
+            margin-top: 4rem;
+            color: var(--text-primary);
         }
 
         @media (max-width: 768px) {
-            .nav-links {
+            .nav {
                 flex-direction: column;
-                gap: 0.5rem;
+                gap: 1rem;
             }
-            
-            .team-content {
-                margin: 1rem;
-                padding: 0;
+
+            .nav-links {
+                gap: 1rem;
             }
-            
-            .team-member {
-                margin: 1rem 0;
+
+            .members-grid {
+                grid-template-columns: 1fr;
+                padding: 1rem;
             }
         }
     </style>
 </head>
 <body>
-    <header>
-        <nav class="navbar">
+    <header class="header">
+        <nav class="nav">
             <div class="nav-brand">
-                <h2>🎺 BrassBook</h2>
+                <span>📄 ResumeBuilder</span>
             </div>
             <ul class="nav-links">
                 <li><a href="index.html">Главная</a></li>
                 <li><a href="about.html">О проекте</a></li>
-                <li><a href="design.html">Дизайн</a></li>
                 <li><a href="team.html">Участники</a></li>
-                <li><a href="blog.html">Журнал</a></li>
+                <li><a href="journal.html">Журнал</a></li>
                 <li><a href="resources.html">Ресурсы</a></li>
             </ul>
         </nav>
     </header>
 
-    <main class="team-content">
-        <h1 style="color: #8B4513; text-align: center; margin-bottom: 1rem;">Команда проекта BrassBook</h1>
-        <p style="text-align: center; color: #666; margin-bottom: 2rem; font-size: 1.1rem;">Над образовательной платформой работает команда из 15+ специалистов, разделенных на 4 основных направления.</p>
-        
-        <div class="project-leadership">
-            <h2>🎓 Руководство проекта</h2>
-            <p style="margin: 1rem 0; font-size: 1.2rem;"><strong>Куратор проекта:</strong> В. А. Стрижеус</p>
-            <p style="margin: 1rem 0; font-size: 1.2rem;"><strong>Заказчик:</strong> Образовательная платформа brassbook.ru</p>
-        </div>
-        
-        <h2 style="color: #8B4513; text-align: center; margin: 3rem 0 2rem 0;">Тим-лидеры и ключевые участники</h2>
-        <div class="team-grid">
-            <div class="team-member">
-                <div class="member-avatar">👨‍💼</div>
-                <h3>Карватко Роберт</h3>
-                <div class="member-role">Проджект-менеджер</div>
-                <div class="contributions">
-                    <ul>
-                        <li>Координация работы всех команд</li>
-                        <li>Взаимодействие с куратором</li>
-                        <li>Составление отчетности</li>
-                        <li>Управление платформой Pyrus</li>
-                    </ul>
+    <main class="main">
+        <section class="page-hero">
+            <div class="container">
+                <h1>Участники проекта</h1>
+                <p>Команда разработчиков и их вклад в проект</p>
+            </div>
+        </section>
+
+        <section class="team-members">
+            <div class="container">
+                <div class="members-grid">
+                    <div class="member-card">
+                        <div class="member-avatar">ЛК</div>
+                        <h3>Королева-Курбатова Лилия Денисовна</h3>
+                        <p class="member-role">Project Manager & Full-stack Developer</p>
+                        
+                        <div class="contributions">
+                            <h4>Вклад в проектную деятельность:</h4>
+                            <ul>
+                                <li>Разработка концепции и архитектуры приложения</li>
+                                <li>Координация работы команды и управление проектом</li>
+                                <li>Проектирование пользовательского интерфейса в Figma</li>
+                                <li>Разработка frontend части приложения</li>
+                                <li>Интеграция с backend сервисами</li>
+                                <li>Тестирование и отладка функционала</li>
+                                <li>Подготовка документации и презентации</li>
+                            </ul>
+                        </div>
+
+                        <div class="skills">
+                            <h4>Ключевые навыки:</h4>
+                            <div class="skill-tags">
+                                <span class="skill-tag">Project Management</span>
+                                <span class="skill-tag">UI/UX Design</span>
+                                <span class="skill-tag">Frontend Development</span>
+                                <span class="skill-tag">Figma</span>
+                                <span class="skill-tag">Git</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="member-card">
+                        <div class="member-avatar">АИ</div>
+                        <h3>Арсентьев Дмитрий Андреевич</h3>
+                        <p class="member-role">Научный руководитель</p>
+                        
+                        <div class="contributions">
+                            <h4>Вклад в проект:</h4>
+                            <ul>
+                                <li>Консультации по методологии разработки</li>
+                                <li>Ревью архитектурных решений</li>
+                                <li>Экспертиза в области UX/UI дизайна</li>
+                                <li>Помощь в формулировании требований</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
-            
-            <div class="team-member">
-                <div class="member-avatar">👩‍💼</div>
-                <h3>Королева-Курбатова Лилия</h3>
-                <div class="member-role">Проджект-менеджер</div>
-                <div class="contributions">
-                    <ul>
-                        <li>Распределение задач между командами</li>
-                        <li>Контроль сроков выполнения</li>
-                        <li>Обратная связь с участниками</li>
-                        <li>Подготовка презентаций</li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="team-member">
-                <div class="member-avatar">👨‍🎨</div>
-                <h3>Тим-лидер Дизайн</h3>
-                <div class="member-role">Lead UI/UX Designer</div>
-                <div class="contributions">
-                    <ul>
-                        <li>Доработка существующих страниц</li>
-                        <li>Реорганизация интерфейса</li>
-                        <li>Разработка темной темы</li>
-                        <li>Создание анимаций</li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="team-member">
-                <div class="member-avatar">👨‍💻</div>
-                <h3>Тим-лидер Бек-енд</h3>
-                <div class="member-role">Backend Team Lead</div>
-                <div class="contributions">
-                    <ul>
-                        <li>Разработка алгоритма сравнения мелодий</li>
-                        <li>Настройка автоматического тестирования</li>
-                        <li>Оптимизация на Python</li>
-                        <li>Доработка функции авторизации</li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="team-member">
-                <div class="member-avatar">👩‍💻</div>
-                <h3>Тим-лидер Фронт-енд</h3>
-                <div class="member-role">Frontend Team Lead</div>
-                <div class="contributions">
-                    <ul>
-                        <li>Разработка смены тональности</li>
-                        <li>Настройка скорости воспроизведения</li>
-                        <li>Доработка фильтрации треков</li>
-                        <li>Верстка проверки мелодий</li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="team-member">
-                <div class="member-avatar">👨‍🔧</div>
-                <h3>Команда разработки</h3>
-                <div class="member-role">Разработчики (10+ человек)</div>
-                <div class="contributions">
-                    <ul>
-                        <li>Фронтенд и бекенд разработка</li>
-                        <li>Тестирование функциональности</li>
-                        <li>Интеграция модулей</li>
-                        <li>Техническая документация</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+        </section>
     </main>
 
-    <footer>
-        <div class="footer-content">
-            <p>&copy; 2025 BrassBook. Образовательная платформа для музыкальных школ.</p>
-            <p>Куратор проекта: В. А. Стрижеус</p>
-        </div>
+    <footer class="footer">
+        <p>&copy; 2025 ResumeBuilder. Курсовой проект по Технологиям прикладного программирования</p>
     </footer>
 </body>
 </html>
