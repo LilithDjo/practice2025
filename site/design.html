@@ -1,1 +1,239 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Дизайн - BrassBook</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+        }
+
+        .navbar {
+            background: #8B4513;
+            color: white;
+            padding: 1rem 5%;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .nav-brand h2 {
+            color: white;
+            font-size: 1.8rem;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+        }
+
+        .design-content {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 5%;
+        }
+        
+        .design-section {
+            background: white;
+            padding: 3rem;
+            margin-bottom: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .gallery-item {
+            text-align: center;
+            transition: all 0.3s;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .gallery-img {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border: 3px solid #8B4513;
+        }
+        
+        .design-process {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .process-step {
+            background: #f8f4e8;
+            padding: 1.5rem;
+            border-radius: 10px;
+            border-left: 4px solid #8B4513;
+        }
+
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            
+            .design-section {
+                margin: 1rem;
+                padding: 2rem 1rem;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="nav-brand">
+                <h2>🎺 BrassBook</h2>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="about.html">О проекте</a></li>
+                <li><a href="design.html">Дизайн</a></li>
+                <li><a href="team.html">Участники</a></li>
+                <li><a href="blog.html">Журнал</a></li>
+                <li><a href="resources.html">Ресурсы</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="design-content">
+        <section class="design-section">
+            <h1 style="color: #8B4513; margin-bottom: 1rem;">Дизайн платформы BrassBook</h1>
+            <p style="color: #666; font-size: 1.1rem;">Процесс проектирования пользовательского интерфейса и опыта в Figma</p>
+            
+            <div class="design-process">
+                <div class="process-step">
+                    <h3>🎯 Исследование</h3>
+                    <p>Анализ потребностей учащихся музыкальных школ, изучение конкурентов</p>
+                </div>
+                <div class="process-step">
+                    <h3>✏️ Вайрфреймы</h3>
+                    <p>Создание структурных схем и прототипов низкой точности</p>
+                </div>
+                <div class="process-step">
+                    <h3>🎨 Визуальный дизайн</h3>
+                    <p>Разработка цветовой палитры, типографики и UI-компонентов</p>
+                </div>
+                <div class="process-step">
+                    <h3>🔗 Прототипирование</h3>
+                    <p>Создание интерактивных прототипов для тестирования</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="design-section">
+            <h2 style="color: #8B4513; margin-bottom: 2rem;">Галерея дизайна</h2>
+            
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="images/main-page.png" alt="Главная страница BrassBook" class="gallery-img">
+                    <p style="margin-top: 1rem; font-weight: bold; color: #2c3e50;">Главная страница</p>
+                    <p style="color: #666; margin-top: 0.5rem;">Центральный хаб с навигацией и основными функциями платформы</p>
+                </div>
+                
+                <div class="gallery-item">
+                    <img src="images/album-page.png" alt="Страница альбома" class="gallery-img">
+                    <p style="margin-top: 1rem; font-weight: bold; color: #2c3e50;">Страница альбома</p>
+                    <p style="color: #666; margin-top: 0.5rem;">Интерфейс для работы с музыкальными альбомами и нотами</p>
+                </div>
+                
+                <div class="gallery-item">
+                    <img src="images/player-screen.png" alt="Аудио-плеер" class="gallery-img">
+                    <p style="margin-top: 1rem; font-weight: bold; color: #2c3e50;">Аудио-плеер</p>
+                    <p style="color: #666; margin-top: 0.5rem;">Панель управления воспроизведением с визуализацией звука</p>
+                </div>
+                
+                <div class="gallery-item">
+                    <img src="images/dark-theme.png" alt="Тёмная тема" class="gallery-img">
+                    <p style="margin-top: 1rem; font-weight: bold; color: #2c3e50;">Тёмная тема</p>
+                    <p style="color: #666; margin-top: 0.5rem;">Альтернативная цветовая схема для комфортного использования</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="design-section">
+            <h2 style="color: #8B4513; margin-bottom: 1rem;">Ключевые особенности дизайна</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-top: 1.5rem;">
+                <div style="text-align: center; padding: 1rem;">
+                    <div style="font-size: 2rem; margin-bottom: 0.5rem;">🎵</div>
+                    <h4 style="color: #8B4513;">Музыкальная тематика</h4>
+                    <p style="color: #666; font-size: 0.9rem;">Дизайн отражает специфику музыкального образования</p>
+                </div>
+                <div style="text-align: center; padding: 1rem;">
+                    <div style="font-size: 2rem; margin-bottom: 0.5rem;">📱</div>
+                    <h4 style="color: #8B4513;">Адаптивность</h4>
+                    <p style="color: #666; font-size: 0.9rem;">Оптимизация для разных устройств и экранов</p>
+                </div>
+                <div style="text-align: center; padding: 1rem;">
+                    <div style="font-size: 2rem; margin-bottom: 0.5rem;">🎨</div>
+                    <h4 style="color: #8B4513;">Двойная тема</h4>
+                    <p style="color: #666; font-size: 0.9rem;">Светлая и тёмная темы для комфорта пользователей</p>
+                </div>
+                <div style="text-align: center; padding: 1rem;">
+                    <div style="font-size: 2rem; margin-bottom: 0.5rem;">⚡</div>
+                    <h4 style="color: #8B4513;">Интуитивность</h4>
+                    <p style="color: #666; font-size: 0.9rem;">Понятный интерфейс для пользователей любого уровня</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2024 BrassBook. Образовательная платформа для музыкальных школ.</p>
+            <p>Куратор проекта: В. А. Стрижеус</p>
+        </div>
+    </footer>
+</body>
+</html>
