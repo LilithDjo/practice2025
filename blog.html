@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Журнал прогресса - BrassBook</title>
+    <title>Журнал прогресса - ResumeBuilder</title>
     <style>
         * {
             margin: 0;
@@ -12,272 +12,398 @@
         }
 
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: 'Open Sans', Arial, sans-serif;
             line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            min-height: 100vh;
+            color: #2D2D2D;
+            background-color: #FDFDFD;
         }
 
-        .navbar {
-            background: #8B4513;
-            color: white;
-            padding: 1rem 5%;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        :root {
+            --primary-accent: #A68B6A;
+            --secondary-accent: #D7C8B7;
+            --background: #FDFDFD;
+            --text-primary: #2D2D2D;
+            --text-secondary: #5A5A5A;
         }
 
-        .nav-brand h2 {
-            color: white;
-            font-size: 1.8rem;
+        .header {
+            background-color: var(--background);
+            border-bottom: 1px solid var(--secondary-accent);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 600;
+            font-size: 1.25rem;
         }
 
         .nav-links {
             display: flex;
             list-style: none;
             gap: 2rem;
-            margin-top: 1rem;
-            flex-wrap: wrap;
         }
 
         .nav-links a {
-            color: white;
             text-decoration: none;
-            padding: 0.5rem 1rem;
-            border-radius: 5px;
-            transition: all 0.3s;
+            color: var(--text-primary);
             font-weight: 500;
+            transition: color 0.3s ease;
         }
 
         .nav-links a:hover {
-            background: rgba(255,255,255,0.2);
-            transform: translateY(-2px);
+            color: var(--primary-accent);
         }
 
-        .blog-content {
+        .main {
+            margin-top: 80px;
+        }
+
+        .container {
             max-width: 1200px;
-            margin: 2rem auto;
-            padding: 0 5%;
+            margin: 0 auto;
+            padding: 0 2rem;
         }
-        
-        .blog-posts {
-            margin-top: 2rem;
+
+        .page-hero {
+            background: linear-gradient(135deg, var(--secondary-accent) 0%, var(--background) 100%);
+            padding: 3rem 0;
+            text-align: center;
+            margin-bottom: 3rem;
         }
-        
-        .blog-post {
+
+        .page-hero h1 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .page-hero p {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 30px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background-color: var(--secondary-accent);
+        }
+
+        .post {
+            display: flex;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .post-date {
+            flex-shrink: 0;
+            width: 80px;
+            text-align: center;
+            margin-right: 2rem;
+        }
+
+        .date-day {
+            display: block;
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--primary-accent);
+        }
+
+        .date-month {
+            display: block;
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+
+        .date-year {
+            display: block;
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+
+        .post-content {
+            flex: 1;
             background: white;
             padding: 2rem;
-            margin-bottom: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transition: all 0.3s;
-        }
-        
-        .blog-post:hover {
-            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
-        }
-        
-        .post-date {
-            color: #8B4513;
-            font-size: 1rem;
-            margin-bottom: 1rem;
-            font-weight: bold;
-        }
-        
-        .post-milestones {
-            background: #f8f9fa;
-            padding: 1.5rem;
-            border-radius: 10px;
-            margin-top: 1.5rem;
-            border-left: 4px solid #8B4513;
-        }
-        
-        .milestone-item {
-            display: flex;
-            align-items: center;
-            margin: 0.8rem 0;
-            padding: 0.5rem;
-        }
-        
-        .milestone-status {
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            margin-right: 15px;
-            flex-shrink: 0;
-        }
-        
-        .status-completed {
-            background: #27ae60;
-        }
-        
-        .status-in-progress {
-            background: #f39c12;
-        }
-        
-        .status-planned {
-            background: #bdc3c7;
-        }
-        
-        .team-progress {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-        
-        .team-task {
-            background: #e8f4f8;
-            padding: 1rem;
-            border-radius: 8px;
-            font-size: 0.9rem;
-            border-left: 3px solid #3498db;
+            border-radius: 12px;
+            border: 1px solid var(--secondary-accent);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
-        footer {
-            background: #2c3e50;
-            color: white;
+        .post-content h3 {
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+
+        .post-details {
+            margin: 1.5rem 0;
+        }
+
+        .post-details h4 {
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .post-details ul {
+            list-style-position: inside;
+            color: var(--text-secondary);
+        }
+
+        .post-details li {
+            margin-bottom: 0.25rem;
+        }
+
+        .design-preview {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin: 1rem 0;
+        }
+
+        .design-preview img {
+            border-radius: 8px;
+            border: 1px solid var(--secondary-accent);
+            max-width: 300px;
+        }
+
+        .milestone {
+            background-color: var(--secondary-accent);
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+
+        .milestone h4 {
+            color: var(--primary-accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .post-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--secondary-accent);
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+
+        .status {
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-weight: 600;
+        }
+
+        .status-planning {
+            background-color: #E3F2FD;
+            color: #1976D2;
+        }
+
+        .status-design {
+            background-color: #F3E5F5;
+            color: #7B1FA2;
+        }
+
+        .status-completed {
+            background-color: #E8F5E8;
+            color: #2E7D32;
+        }
+
+        .footer {
+            background-color: var(--secondary-accent);
             text-align: center;
             padding: 2rem;
-            margin-top: 3rem;
+            margin-top: 4rem;
+            color: var(--text-primary);
         }
 
         @media (max-width: 768px) {
+            .nav {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
             .nav-links {
+                gap: 1rem;
+            }
+
+            .timeline::before {
+                left: 20px;
+            }
+            
+            .post-date {
+                width: 60px;
+                margin-right: 1rem;
+            }
+            
+            .post-meta {
                 flex-direction: column;
                 gap: 0.5rem;
+                align-items: flex-start;
             }
             
-            .blog-content {
-                margin: 1rem;
-                padding: 0;
+            .design-preview {
+                flex-direction: column;
             }
             
-            .blog-post {
-                padding: 1.5rem;
-            }
-            
-            .team-progress {
-                grid-template-columns: 1fr;
+            .design-preview img {
+                max-width: 100%;
             }
         }
     </style>
 </head>
 <body>
-    <header>
-        <nav class="navbar">
+    <header class="header">
+        <nav class="nav">
             <div class="nav-brand">
-                <h2>🎺 BrassBook</h2>
+                <span>📄 ResumeBuilder</span>
             </div>
             <ul class="nav-links">
                 <li><a href="index.html">Главная</a></li>
                 <li><a href="about.html">О проекте</a></li>
-                <li><a href="design.html">Дизайн</a></li>
                 <li><a href="team.html">Участники</a></li>
-                <li><a href="blog.html">Журнал</a></li>
+                <li><a href="journal.html">Журнал</a></li>
                 <li><a href="resources.html">Ресурсы</a></li>
             </ul>
         </nav>
     </header>
 
-    <main class="blog-content">
-        <h1 style="color: #8B4513; text-align: center; margin-bottom: 1rem;">Журнал прогресса проекта BrassBook</h1>
-        <p style="text-align: center; color: #666; margin-bottom: 2rem; font-size: 1.1rem;">Отслеживание ключевых этапов разработки образовательной платформы для музыкальных школ.</p>
-        
-        <div class="blog-posts">
-            <article class="blog-post">
-                <h2 style="color: #2c3e50; margin-bottom: 0.5rem;">🚀 Старт проекта и формирование команд</h2>
-                <div class="post-date">Февраль 2025</div>
-                <p style="color: #555; line-height: 1.8;">Начало работы над образовательной платформой BrassBook. Сформированы 4 команды: Дизайн, Бек-енд, Фронт-енд и Менеджмент.</p>
-                
-                <div class="post-milestones">
-                    <h4 style="color: #8B4513; margin-bottom: 1rem;">Достижения этапа:</h4>
-                    <div class="milestone-item">
-                        <div class="milestone-status status-completed"></div>
-                        <span>Получено ТЗ от заказчика brassbook.ru</span>
+    <main class="main">
+        <section class="page-hero">
+            <div class="container">
+                <h1>Журнал прогресса</h1>
+                <p>Хронология разработки и ключевые достижения проекта</p>
+            </div>
+        </section>
+
+        <section class="journal-posts">
+            <div class="container">
+                <div class="timeline">
+                    <div class="post">
+                        <div class="post-date">
+                            <span class="date-day">15</span>
+                            <span class="date-month">Апреля</span>
+                            <span class="date-year">2025</span>
+                        </div>
+                        <div class="post-content">
+                            <h3>🎯 Начало работы над проектом</h3>
+                            <p>Приступили к разработке концепции мобильного приложения для составления резюме. Провели первичный анализ рынка и определили целевую аудиторию.</p>
+                            
+                            <div class="post-details">
+                                <h4>Выполненные задачи:</h4>
+                                <ul>
+                                    <li>Анализ конкурентов на рынке конструкторов резюме</li>
+                                    <li>Определение уникального торгового предложения</li>
+                                    <li>Формирование первичных требований к функционалу</li>
+                                    <li>Создание мудборда для визуальной концепции</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="post-meta">
+                                <span class="author">Автор: Королева-Курбатова Л.Д.</span>
+                                <span class="status status-planning">Статус: Планирование</span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="milestone-item">
-                        <div class="milestone-status status-completed"></div>
-                        <span>Распределены роли и выбраны тим-лидеры</span>
+
+                    <div class="post">
+                        <div class="post-date">
+                            <span class="date-day">01</span>
+                            <span class="date-month">Мая</span>
+                            <span class="date-year">2025</span>
+                        </div>
+                        <div class="post-content">
+                            <h3>🎨 Разработка дизайн-системы</h3>
+                            <p>Завершили работу над фирменным стилем и дизайн-системой приложения. Создали цветовую палитру и разработали базовые UI-компоненты.</p>
+                            
+                            <div class="post-details">
+                                <h4>Достижения:</h4>
+                                <ul>
+                                    <li>Утверждена цветовая палитра в бежевых тонах</li>
+                                    <li>Разработана типографическая система на основе Open Sans</li>
+                                    <li>Созданы прототипы ключевых экранов приложения</li>
+                                    <li>Подготовлены 3 базовых шаблона резюме</li>
+                                </ul>
+                            </div>
+
+                            <div class="design-preview">
+                                <img src="color-palette.png" alt="Цветовая палитра">
+                                <img src="typography.png" alt="Типографика">
+                            </div>
+                            
+                            <div class="post-meta">
+                                <span class="author">Автор: Королева-Курбатова Л.Д.</span>
+                                <span class="status status-design">Статус: Дизайн</span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="milestone-item">
-                        <div class="milestone-status status-completed"></div>
-                        <span>Настроена рабочая среда и Pyrus для управления задачами</span>
-                    </div>
-                    <div class="milestone-item">
-                        <div class="milestone-status status-completed"></div>
-                        <span>Проведен анализ существующей платформы</span>
+
+                    <div class="post">
+                        <div class="post-date">
+                            <span class="date-day">20</span>
+                            <span class="date-month">Мая</span>
+                            <span class="date-year">2025</span>
+                        </div>
+                        <div class="post-content">
+                            <h3>🚀 Запуск MVP версии</h3>
+                            <p>Успешно завершили разработку минимально жизнеспособного продукта (MVP). Приложение включает все основные функции и готово к тестированию.</p>
+                            
+                            <div class="post-details">
+                                <h4>Реализованный функционал:</h4>
+                                <ul>
+                                    <li>Пошаговый конструктор резюме</li>
+                                    <li>3 ATS-оптимизированных шаблона</li>
+                                    <li>Система контекстных подсказок</li>
+                                    <li>Экспорт готового резюме в PDF</li>
+                                    <li>Адаптивный интерфейс для мобильных устройств</li>
+                                </ul>
+                            </div>
+
+                            <div class="milestone">
+                                <h4>🎉 Ключевое достижение:</h4>
+                                <p>Приложение успешно прошло первое внутреннее тестирование и готово к демонстрации научному руководителю.</p>
+                            </div>
+                            
+                            <div class="post-meta">
+                                <span class="author">Автор: Королева-Курбатова Л.Д.</span>
+                                <span class="status status-completed">Статус: Завершено</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </article>
-            
-            <article class="blog-post">
-                <h2 style="color: #2c3e50; margin-bottom: 0.5rem;">🎨 Проектирование интерфейса и дизайн системы</h2>
-                <div class="post-date">Март 2025</div>
-                <p style="color: #555; line-height: 1.8;">Этап проектирования пользовательского опыта и визуального дизайна платформы. Доработка существующих страниц и создание новых интерфейсов.</p>
-                
-                <div class="post-milestones">
-                    <h4 style="color: #8B4513; margin-bottom: 1rem;">Достижения этапа:</h4>
-                    <div class="milestone-item">
-                        <div class="milestone-status status-completed"></div>
-                        <span>Доработаны существующие страницы платформы</span>
-                    </div>
-                    <div class="milestone-item">
-                        <div class="milestone-status status-completed"></div>
-                        <span>Проведена реорганизация внутренней структуры</span>
-                    </div>
-                    <div class="milestone-item">
-                        <div class="milestone-status status-completed"></div>
-                        <span>Созданы анимации для недостающих страниц</span>
-                    </div>
-                    <div class="milestone-item">
-                        <div class="milestone-status status-in-progress"></div>
-                        <span>Доработка темной темы по новому образцу</span>
-                    </div>
-                </div>
-            </article>
-            
-            <article class="blog-post">
-                <h2 style="color: #2c3e50; margin-bottom: 0.5rem;">💻 Активная фаза разработки функциональности</h2>
-                <div class="post-date">Апрель 2025</div>
-                <p style="color: #555; line-height: 1.8;">Интенсивная разработка ключевых функций платформы. Параллельная работа над бекендом и фронтендом.</p>
-                
-                <div class="post-milestones">
-                    <h4 style="color: #8B4513; margin-bottom: 1rem;">Текущий прогресс по командам:</h4>
-                    <div class="team-progress">
-                        <div class="team-task">
-                            <strong>Бек-енд:</strong> Доработка алгоритма сравнения мелодий
-                        </div>
-                        <div class="team-task">
-                            <strong>Бек-енд:</strong> Настройка автоматического тестирования
-                        </div>
-                        <div class="team-task">
-                            <strong>Бек-енд:</strong> Доработка функции авторизации
-                        </div>
-                        <div class="team-task">
-                            <strong>Фронт-енд:</strong> Настройка автоматического развертывания
-                        </div>
-                        <div class="team-task">
-                            <strong>Фронт-енд:</strong> Разработка смены тональности и скорости
-                        </div>
-                        <div class="team-task">
-                            <strong>Фронт-енд:</strong> Доработка фильтрации треков
-                        </div>
-                    </div>
-                </div>
-                
-                <div style="margin-top: 1.5rem; padding: 1.5rem; background: #e8f4f8; border-radius: 10px; border-left: 4px solid #3498db;">
-                    <h4 style="color: #2c3e50; margin-bottom: 0.5rem;">🎯 Ближайшие цели:</h4>
-                    <p style="color: #555; margin: 0;">Завершение основных функций к демо-показу, начало интеграционного тестирования, подготовка к промежуточной аттестации.</p>
-                </div>
-            </article>
-        </div>
+            </div>
+        </section>
     </main>
 
-    <footer>
-        <div class="footer-content">
-            <p>&copy; 2025 BrassBook. Образовательная платформа для музыкальных школ.</p>
-            <p>Куратор проекта: В. А. Стрижеус</p>
-        </div>
+    <footer class="footer">
+        <p>&copy; 2025 ResumeBuilder. Курсовой проект по Технологиям прикладного программирования</p>
     </footer>
 </body>
 </html>
