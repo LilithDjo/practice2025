@@ -4,11 +4,58 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Участники - BrassBook</title>
-    <link rel="stylesheet" href="css/style.css">
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+        }
+
+        .navbar {
+            background: #8B4513;
+            color: white;
+            padding: 1rem 5%;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .nav-brand h2 {
+            color: white;
+            font-size: 1.8rem;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+        }
+
         .team-content {
             max-width: 1200px;
-            margin: 6rem auto 2rem;
+            margin: 2rem auto;
             padding: 0 5%;
         }
         
@@ -23,8 +70,14 @@
             background: white;
             padding: 2rem;
             border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             text-align: center;
+            transition: all 0.3s;
+        }
+        
+        .team-member:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
         }
         
         .member-avatar {
@@ -44,6 +97,7 @@
             color: #8B4513;
             font-weight: 600;
             margin: 0.5rem 0;
+            font-size: 1.1rem;
         }
         
         .contributions {
@@ -57,8 +111,9 @@
         }
         
         .contributions li {
-            padding: 0.3rem 0;
+            padding: 0.5rem 0;
             border-bottom: 1px solid #eee;
+            color: #555;
         }
         
         .contributions li:before {
@@ -68,11 +123,37 @@
         }
         
         .project-leadership {
-            background: #f8f4e8;
+            background: linear-gradient(135deg, #8B4513 0%, #D2691E 100%);
+            color: white;
             padding: 2rem;
             border-radius: 15px;
             margin: 3rem 0;
             text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            
+            .team-content {
+                margin: 1rem;
+                padding: 0;
+            }
+            
+            .team-member {
+                margin: 1rem 0;
+            }
         }
     </style>
 </head>
@@ -93,16 +174,16 @@
     </header>
 
     <main class="team-content">
-        <h1>Команда проекта BrassBook</h1>
-        <p>Над образовательной платформой работает команда из 15+ специалистов, разделенных на 4 основных направления.</p>
+        <h1 style="color: #8B4513; text-align: center; margin-bottom: 1rem;">Команда проекта BrassBook</h1>
+        <p style="text-align: center; color: #666; margin-bottom: 2rem; font-size: 1.1rem;">Над образовательной платформой работает команда из 15+ специалистов, разделенных на 4 основных направления.</p>
         
         <div class="project-leadership">
             <h2>🎓 Руководство проекта</h2>
-            <p><strong>Куратор проекта:</strong> В. А. Стрижеус</p>
-            <p><strong>Заказчик:</strong> Образовательная платформа brassbook.ru</p>
+            <p style="margin: 1rem 0; font-size: 1.2rem;"><strong>Куратор проекта:</strong> В. А. Стрижеус</p>
+            <p style="margin: 1rem 0; font-size: 1.2rem;"><strong>Заказчик:</strong> Образовательная платформа brassbook.ru</p>
         </div>
         
-        <h2>Тим-лидеры и ключевые участники</h2>
+        <h2 style="color: #8B4513; text-align: center; margin: 3rem 0 2rem 0;">Тим-лидеры и ключевые участники</h2>
         <div class="team-grid">
             <div class="team-member">
                 <div class="member-avatar">👨‍💼</div>
